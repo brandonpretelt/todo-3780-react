@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import TodoContextProvider from './contexts/TodoContext';
+import TaskList from './components/TaskList';
+import AddTask from './components/AddTask';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [edit, setEditMode] = useState(false);
+
+ 
+
+    return (
+      <div>
+        <TodoContextProvider>
+        <h3> Add Your Thing(s) To Do For The Day:</h3>
+        <AddTask />
+        
+        <h3> To Do List: </h3>
+        
+          <div className="container">
+        
+                   
+                <TaskList />
+            
+             
+          </div>
+        </TodoContextProvider>
+      </div>
+    );
 }
 
 export default App;
+/* 
+
+ <TodoContext.Provider value={[todoItems, [edit, setEditMode]]}>
+      
+          </TodoContext.Provider>*/
+
+          /* addTaskToList={addTaskToList} */
