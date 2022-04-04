@@ -23,8 +23,3 @@ const AddTask = () => {
 };
 
 export default AddTask;
-
-/* onChange={(e)=> {
-    setTodoItems([...todoItems, {taskName: e.target.value}]);
-    console.log(todoItems)
-}}  */

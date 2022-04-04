@@ -7,22 +7,17 @@ const TaskList = () => {
     const { todoItems } = useContext(TodoContext);
     return (
         <>
-            {todoItems.map((item, index) => (
-                <div className="todo-item">
-                    <TaskItem key={index} item={item.taskName}/>
+            {todoItems.map((todoItems) => (
+                <div className='todo-item'>
+                    <TaskItem
+                        key={todoItems.id}
+                        todoItems={todoItems}
+                    />
                 </div>
-            ))}    
+            ))}
+
         </>
-    )
-}
+    );
+};
 
 export default TaskList;
-
-/**
- * 
- *                     <div className="button-group">
-                        <EditButton findId={findId}/>
-                        <DeleteButton />
-                    </div>
- * 
- */

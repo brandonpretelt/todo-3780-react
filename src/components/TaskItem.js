@@ -1,22 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
 
-const TaskItem = ({item}) => {
-    const { todoItems } = useContext(TodoContext);
+// ! will try edit mode eventually....
+
+const TaskItem = ({todoItems}) => {
 
     return(
         <>
-      
-            
-             <div>{item}</div>
-               
-                
-               
-                <EditButton />
-                <DeleteButton todoItems={todoItems}/>
-           
+            <div>{todoItems.taskName}</div>
+            <DeleteButton todoItems={todoItems} />
         </>
     )
 }
@@ -24,3 +17,32 @@ const TaskItem = ({item}) => {
 export default TaskItem;
 
 /*  {edit ? (<div>'hi' </div>) :  <div>{item}</div>} */
+/*   <EditButton todoItems={todoItems}/> */
+
+/* 
+
+    <>
+            
+            {editMode ? 
+            <input onDoubleClick={(e) => {
+                enterEdit()
+                dispatch({type: 'EDIT_TODO', taskName: e.target.value})
+            }} type="text" placeholder={todoItems.taskName}  /> : 
+                <div onDoubleClick={()=>enterEdit()}>{todoItems.taskName}</div>}
+                <DeleteButton todoItems={todoItems} />
+           
+        </>
+
+*/
+
+/* 
+
+    const { dispatch } = useContext(TodoContext);
+    
+    const [editMode, setEditMode] = useState(false);
+    const enterEdit = () => {
+        setEditMode((editMode) => !editMode);
+    };
+
+
+*/

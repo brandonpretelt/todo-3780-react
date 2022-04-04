@@ -1,17 +1,17 @@
 import { createContext, useEffect, useReducer } from 'react';
 import { todoReducer } from '../reducers/todoReducer';
+import useSetLS from '../hooks/useSetLS';
 
 export const TodoContext = createContext();
 
 const TodoContextProvider = (props) => {
     const [todoItems, dispatch] = useReducer(todoReducer, [], () => {
         const localData = localStorage.getItem('tasks');
-        return localData ? JSON.parse(localData) : [];
+        return localData ? JSON.parse(localData) : []; 
+    
     });
 
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(todoItems));
-    }, [todoItems]);
+    useSetLS('tasks', todoItems);
 
   
     return (
