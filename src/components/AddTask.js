@@ -7,7 +7,7 @@ const AddTask = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: 'ADD_TODO', todoItems: {taskName}})
+        dispatch({type: 'ADD_TODO', taskName})
         setTaskName('');
     }
 
@@ -15,7 +15,9 @@ const AddTask = () => {
         <form onSubmit={handleSubmit}>
             <input type='text'
                 value={taskName}
-                onChange={(e) => setTaskName(e.target.value)} 
+                onChange={(e) => {
+                    setTaskName(e.target.value)
+                }} 
                 placeholder='Add item...' />
             <input type='submit' value='Add task' />
         </form>
@@ -23,3 +25,4 @@ const AddTask = () => {
 };
 
 export default AddTask;
+// onChange={(e) => setTaskName(e.target.value)}

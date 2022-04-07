@@ -5,17 +5,16 @@ import useSetLS from '../hooks/useSetLS';
 export const TodoContext = createContext();
 
 const TodoContextProvider = (props) => {
-    const [todoItems, dispatch] = useReducer(todoReducer, [], () => {
+    const [state, dispatch] = useReducer(todoReducer, [], () => {
         const localData = localStorage.getItem('tasks');
         return localData ? JSON.parse(localData) : []; 
     
     });
-
-    useSetLS('tasks', todoItems);
+    useSetLS('tasks', state);
 
   
     return (
-        <TodoContext.Provider value={{todoItems, dispatch}}>
+        <TodoContext.Provider value={{state, dispatch}}>
             {props.children}
         </TodoContext.Provider>
     )

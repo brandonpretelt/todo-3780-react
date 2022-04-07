@@ -4,13 +4,13 @@ import { useContext } from 'react';
 import { TodoContext } from '../contexts/TodoContext';
 
 const TaskList = () => {
-    const { todoItems } = useContext(TodoContext);
+    const { state } = useContext(TodoContext);
     return (
         <>
-            {todoItems.map((todoItems) => (
+            {state.map((todoItems) => (
                 <div className='todo-item'>
                     <TaskItem
-                        key={todoItems.id}
+                        key={state.id}
                         todoItems={todoItems}
                     />
                 </div>
