@@ -1,5 +1,9 @@
-.container {
+.app-container {
+  width: min(100% - 2rem, 600px);
   margin: 0 auto;
+}
 
-  gap: 1em;
+h3,
+div {
+  text-align: center;
 }
